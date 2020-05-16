@@ -31,7 +31,7 @@ import java.util.List;
 public class MybatisPlusConfig {
     public static ThreadLocal<String> mytableNmae = new ThreadLocal<String>();
 
-    //设置分页解析器
+  /*  //设置分页解析器
     @Bean
     public PaginationInterceptor paginationInterceptor() {
         PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
@@ -49,9 +49,9 @@ public class MybatisPlusConfig {
             }
             @Override
             public boolean doTableFilter(String tableName) {
-              /*  if ("user".equals(tableName)) {
+              *//*  if ("user".equals(tableName)) {
                     return true;
-                }*/
+                }*//*
                 return false;
             }
         });
@@ -70,7 +70,7 @@ public class MybatisPlusConfig {
                     return false;
                 }
         );
-    /*    paginationInterceptor.setSqlParserFilter(new ISqlParserFilter() {
+    *//*    paginationInterceptor.setSqlParserFilter(new ISqlParserFilter() {
             @Override
             public boolean doFilter(MetaObject metaObject) {
                 MappedStatement ms = SqlParserHelper.getMappedStatement(metaObject);
@@ -79,12 +79,17 @@ public class MybatisPlusConfig {
                 }
                 return false;
             }
-        });*/
+        });*//*
         iSqlParsersList.add(tenantSqlParser);
         iSqlParsersList.add(dynamicTableNameParser);
         paginationInterceptor.setSqlParserList(iSqlParsersList);
 
         return paginationInterceptor;
+    }*/
+
+    @Bean
+    public PaginationInterceptor paginationInterceptor() {
+        return new PaginationInterceptor();
     }
 
     @Bean

@@ -10,14 +10,14 @@ spring:
     password: root123456
     #driver-class-name: com.p6spy.engine.spy.P6SpyDriver
     driver-class-name: com.mysql.jdbc.Driver
-    initialSize: 5  #��ʼ������������
-    minIdle: 5  #��С��������
-    maxActive: 20 #�����������
-    maxWait: 10000  #��ȡ�������ȴ�ʱ�䣬����
-    testOnBorrow: true #��������ʱ��������Ƿ���Ч
-    testOnReturn: false #�黹����ʱ��������Ƿ���Ч
-    timeBetweenEvictionRunsMillis: 60000 #���ü����������Ƿ���Ч��ʱ�䣨��λ�Ǻ��룩
-    minEvictableIdleTimeMillis: 300000   #���������ӳص���С����ʱ�䣨���룩
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 10000
+    testOnBorrow: true
+    testOnReturn: false
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
 mybatis-plus:
   mapper-locations: classpath:mappers/**.xml
 

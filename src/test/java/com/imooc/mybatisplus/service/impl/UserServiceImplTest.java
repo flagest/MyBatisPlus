@@ -23,7 +23,8 @@ public class UserServiceImplTest {
 
     @Test
     public void testUserService() {
-        final User user = userService.getOne(Wrappers.<User>lambdaQuery().eq(User::getName, "霍去病1"), false);
+        final User user = userService.getOne(Wrappers.<User>lambdaQuery()
+                .eq(User::getName, "霍去病1"), false);
         System.out.println(user);
     }
 

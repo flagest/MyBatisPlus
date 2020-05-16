@@ -2,6 +2,7 @@ package com.imooc.mybatisplus.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -16,8 +17,10 @@ import java.util.Date;
  * @author wu on 2020/5/1 0001
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
+//@EqualsAndHashCode(callSuper = false)
+@TableName("user")
 public class User extends Model<User> {
+    //继承Model<>的目的是方便Service层直接与数据库操作
     private static final long serialVersionUID = 5068351285072462471L;
     //    @TableId(type = IdType.ID_WORKER_STR) 使用雪花算法自动增长id
 //    @TableId(type = IdType.UUID) 是uuid自增id

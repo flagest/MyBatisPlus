@@ -23,7 +23,7 @@ public class UserHigh extends Model<UserHigh> {
     private String email;
     @TableField("manager_id")
     private long managerId;
-    @TableField(fill = FieldFill.INSERT)
+    @TableField(fill = FieldFill.INSERT)//这个注解是用户自动填充
     private LocalDateTime createTime;
     @TableField(fill = FieldFill.UPDATE)
     private LocalDateTime updateTime;

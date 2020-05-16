@@ -51,10 +51,10 @@ public class UserMapperTest {
     //（年龄小于20或者邮箱不为空）并且姓名为王姓
     @Test
     public void findByWapper2() {
-        final QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
+        QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
         userQueryWrapper.nested(wq -> wq.lt("age", "20")).or().isNotNull("email")
                 .and(wq -> wq.likeRight("name", "王"));
-        final List<User> users = userMapper.selectList(userQueryWrapper);
+        List<User> users = userMapper.selectList(userQueryWrapper);
         System.out.println(users);
     }
 
@@ -122,7 +122,7 @@ public class UserMapperTest {
     //返回时Map集合
     @Test
     public void findByMap() {
-        final QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
+        QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
         userQueryWrapper.likeRight("name", "王%").lt("age", 50);
         List<Map<String, Object>> list = userMapper.selectMaps(userQueryWrapper);
         System.out.println(list);
@@ -174,8 +174,10 @@ public class UserMapperTest {
     //第四种方式实现lambda构造器
     @Test
     public void findByLambda2() {
-        final List<User> list = new LambdaQueryChainWrapper<User>(userMapper).likeRight(User::getName, "王")
-                .and(lqcw -> lqcw.lt(User::getAge, 40).or().isNotNull(User::getEmail)).list();
+        final List<User> list = new LambdaQueryChainWrapper<User>(userMapper)
+                .likeRight(User::getName, "王")
+                .and(lqcw -> lqcw.lt(User::getAge, 40)
+                        .or().isNotNull(User::getEmail)).list();
         list.forEach(System.out::println);
     }
 
@@ -189,13 +191,16 @@ public class UserMapperTest {
         users.forEach(System.out::println);
     }
 
+    //第一种分页方式
     @Test
     public void testPage() {
         final QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
-        userQueryWrapper.ge("age", 20);
+        userQueryWrapper.ge("age", 50);
         final Page<User> userPage = new Page<>(1, 4);
+        //如果是queryWrapper是null的话就是查询所有
         final IPage<User> userIPage = userMapper.selectPage(userPage, null);
         System.out.println(userIPage.getTotal() + "总条数");
+        System.out.println(userIPage.getRecords() );
     }
 
     //第二种方式分页
