@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 @ToString
 @TableName("shop_list")
-public class ShopList  implements Serializable {
+public class ShopList implements Serializable {
 
     @TableId(type = IdType.AUTO)
     private Integer shopUserId;
@@ -45,11 +45,8 @@ public class ShopList  implements Serializable {
     private String ylOne;
 
     private String ylTwo;
-
+    private String aa;
     private String ylThree;
-
-
-
 
 
 }
